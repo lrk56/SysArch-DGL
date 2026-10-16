@@ -15,28 +15,28 @@ number, see the instructions there.
 **MC1.** Why can column-major traversal of a row-major-stored array run much slower even when it performs the same number of arithmetic operations and logical loads?
 
 - [ ] A. Column-major traversal uses a slower addition instruction
-- [ ] B. Its access pattern makes much poorer use of data brought into the cache, causing more costly interaction with the memory hierarchy
+- [x] B. Its access pattern makes much poorer use of data brought into the cache, causing more costly interaction with the memory hierarchy
 - [ ] C. The CPU has to execute every column-major instruction twice
 - [ ] D. Row-major traversal skips some array elements
 
 **MC2.** What is a cache line?
 
 - [ ] A. A single variable stored in a CPU register
-- [ ] B. A contiguous block of memory transferred and cached together
+- [x] B. A contiguous block of memory transferred and cached together
 - [ ] C. A dedicated wire connecting the CPU directly to RAM
 - [ ] D. A compiler-generated marker identifying loops
 
 **MC3.** What does **spatial locality** describe?
 
 - [ ] A. A program repeatedly executing the same arithmetic instruction
-- [ ] B. A program being likely to access memory locations near one it recently accessed
+- [x] B. A program being likely to access memory locations near one it recently accessed
 - [ ] C. A processor keeping frequently used variables only in registers
 - [ ] D. Two processors accessing memory at the same time
 
 **MC4.** Why can't a compiler safely reorder every column-major loop into a row-major loop?
 
 - [ ] A. Compilers aren't allowed to change loops
-- [ ] B. Changing iteration order can change program behavior when dependencies, aliasing, data layout, or other constraints are present
+- [x] B. Changing iteration order can change program behavior when dependencies, aliasing, data layout, or other constraints are present
 - [ ] C. Compilers don't know that caches exist
 - [ ] D. Row-major traversal is only valid in assembly language
 
@@ -49,9 +49,9 @@ number, see the instructions there.
 In 2–3 sentences, correct this statement: "If two programs perform the same operations the same number of times, they should take roughly the same amount of time."
 
 > Your answer:
->
->
->
+> This statement ignores the fact that operations do not all cost the same amount and that memory access patterns do matter. Two programs can execute the same instructions the same number of times, but differ massively in runtime if one has good locality, meaning theres mostly cache hits, and the other keeps missing the cache and waiting on main memory, which can be substantially slower than a cache hit. Other factors such as branch prediction, instruction-level parallelism, and data layout can also cause large differences in execution time between two programs.
+
+
 
 ### N2 — Put real numbers on it (15 pts)
 
