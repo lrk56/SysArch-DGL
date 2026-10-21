@@ -51,41 +51,42 @@ In 2–3 sentences, correct this statement: "If two programs perform the same op
 > Your answer:
 > This statement ignores the fact that operations do not all cost the same amount and that memory access patterns do matter. Two programs can execute the same instructions the same number of times, but differ massively in runtime if one has good locality, meaning theres mostly cache hits, and the other keeps missing the cache and waiting on main memory, which can be substantially slower than a cache hit. Other factors such as branch prediction, instruction-level parallelism, and data layout can also cause large differences in execution time between two programs.
 
-
-
 ### N2 — Put real numbers on it (15 pts)
 
-- **Processor / processor family:**
-- **Fastest cache level you investigated:**
-- **Approximate access cost:**
-- **Slower cache level or main memory:**
-- **Approximate access cost:**
-- **What surprised you about the comparison:**
-- **Source:**
+- **Processor / processor family:** AMD Ryzen 9 7950X (Zen 4)
+- **Fastest cache level you investigated:** L1 data cache (L1D)
+- **Approximate access cost:** About 4 CPU cycles, or 0.7 nanoseconds at a 5.7 GHz clock. AMD specifies a 4-cycle integer load-to-use latency, and independent testing measured a similar result.
+- **Slower cache level or main memory:** Main memory (DRAM) after the requested data misses in the caches.
+- **Approximate access cost:** About 73.35 nanoseconds in a test using a Ryzen 9 7950X with DDR5-6000 memory and a 1 GB test size. AMD's optimization guide does not provide a DRAM latency figure.
+- **What surprised you about the comparison:** I was surprised that the measured DRAM access took about 100 times as long as an L1 cache hit. This helped me understand why a program with the same number of loads and additions can run much more slowly when its memory access pattern causes more accesses to reach main memory. The exact ratio varies by workload and hardware.
+- **Sources:**
+- AMD, Software Optimization Guide for the AMD Zen 4 Microarchitecture, publication 57647, §§2.6.2–2.6.4: https://www.amd.com/content/dam/amd/en/documents/processor-tech-docs/software-optimization-guides/57647.zip
+
+- Chester Lam, “AMD’s Zen 4, Part 2: Memory Subsystem and Conclusion,” Chips and Cheese, November 8, 2022: https://chipsandcheese.com/p/amds-zen-4-part-2-memory-subsystem-and-conclusion
 
 ### N3 — Catch the AI (20 pts)
 
-- **What the AI claimed:**
-- **Why you questioned it or wanted more precision:**
-- **What you did to check it:**
-- **What you concluded:**
+- **What the AI claimed:** The AI claimed that column-major traversal of a large array misses on nearly every access, while row-major traversal misses approximately once per 16 accesses.
+- **Why you questioned it or wanted more precision:** I wanted to know whether or not this was always true or whether the cache's design, prefetching, and the arrays size could change the actual miss rate. The original explanation made it sound as if a large array automatically causes nearly every column-major access to miss, but I decided to dig much deeper into this claim. 
+- **What you did to check it:** I pushed back and asked the AI to reconsider its claim and identify which parts it oversimplified. I asked for specific references to support its claims, and I then examined its references, including Cornell's Virtual Workshop material on cache associativity and AMD's Zen 4 optimization guide. Cornell's explanation showed how certain memory strides can cause cache conflicts even when the data could theoretically fit in the cache.
+- **What you concluded:** The original claim that Claude made was far too broad. Column-major traversal has worse spatial locality because consecutive accesses are separated by an entire row, but the actual miss rate depends heavily on many factors such as cache capacity, associativity, array dimensions, and prefetching. Also, TLB misses can effect performance, so total array size by itself does not determine the result.
 
 ### N4 — Your best follow-up (10 pts)
 
 **Your follow-up question:**
 
->
+When the CPU requests data that isn't in L1 cache, what exactly happens next? Does it always go to L2, then L3, then RAM, or can it skip levels? Also, does the CPU have to stop and wait for the data before it can continue executing instructions?
 
 **Why that question was useful, or how it changed/refined your understanding (1–2 sentences):**
 
->
+This question helped me to understand that a cache miss does not necessarily mean that the CPU needs to stop all execution or wait for the full memory latency. The CPU can continue to execute independent instructions and overlap multiple memory requests, although instructions that depend on missing data need to wait. This helped me understand why cache misses affect performance without translating directly into an equal amount of extra runtime. I often struggle to understand these concepts in practice and how they truly function, so this was an incredibly helpful question for me to deal with this weakness. 
 
 ### N5 — Connect back (10 pts)
 
 Check the **two** architecture concepts from lecture that most directly explain the performance difference you investigated, and explain each in one sentence.
 
-- [ ] Cache lines / block-based memory transfers — explanation:
-- [ ] Spatial locality — explanation:
+- [x] Cache lines / block-based memory transfers — explanation:
+- [x] Spatial locality — explanation:
 - [ ] Temporal locality — explanation:
 - [ ] Cache hierarchy (L1/L2/L3) — explanation:
 - [ ] Cache-miss penalty / memory latency — explanation:
