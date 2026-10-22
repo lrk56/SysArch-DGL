@@ -60,7 +60,7 @@ In 2–3 sentences, correct this statement: "If two programs perform the same op
 - **Approximate access cost:** About 73.35 nanoseconds in a test using a Ryzen 9 7950X with DDR5-6000 memory and a 1 GB test size. AMD's optimization guide does not provide a DRAM latency figure.
 - **What surprised you about the comparison:** I was surprised that the measured DRAM access took about 100 times as long as an L1 cache hit. This helped me understand why a program with the same number of loads and additions can run much more slowly when its memory access pattern causes more accesses to reach main memory. The exact ratio varies by workload and hardware.
 - **Sources:**
-- AMD, Software Optimization Guide for the AMD Zen 4 Microarchitecture, publication 57647, §§2.6.2–2.6.4: https://www.amd.com/content/dam/amd/en/documents/processor-tech-docs/software-optimization-guides/57647.zip
+- AMD, Software Optimization Guide for the AMD Zen 4 Microarchitecture, publication 57647, §§2.6.2–2.6.4: https://www.numberworld.org/blogs/2024_8_7_zen5_avx512_teardown/57647_zen4_sog.pdf
 
 - Chester Lam, “AMD’s Zen 4, Part 2: Memory Subsystem and Conclusion,” Chips and Cheese, November 8, 2022: https://chipsandcheese.com/p/amds-zen-4-part-2-memory-subsystem-and-conclusion
 
@@ -85,8 +85,8 @@ This question helped me to understand that a cache miss does not necessarily mea
 
 Check the **two** architecture concepts from lecture that most directly explain the performance difference you investigated, and explain each in one sentence.
 
-- [x] Cache lines / block-based memory transfers — explanation:
-- [x] Spatial locality — explanation:
+- [x] Cache lines / block-based memory transfers — explanation: When the CPU loads an element, it fetches an entire cache line, so row-major traversal can just use nearby elements from the same line instead of wasting most of the transferred data.
+- [x] Spatial locality — explanation: Row-major traversal accesses nearby memory locations consecutively, while column-major traversal jumps between rows, making a less effective usage of spatial locality.
 - [ ] Temporal locality — explanation:
 - [ ] Cache hierarchy (L1/L2/L3) — explanation:
 - [ ] Cache-miss penalty / memory latency — explanation:
