@@ -15,14 +15,14 @@ number, see the instructions there.
 **MC1.** Why does a polling loop generally draw more power than an interrupt-driven equivalent while waiting?
 
 - [ ] A. Polling requires a different arithmetic instruction
-- [ ] B. The CPU continues fetching and executing check instructions even when nothing has happened, while an interrupt-driven CPU can remain idle
+- [x] B. The CPU continues fetching and executing check instructions even when nothing has happened, while an interrupt-driven CPU can remain idle
 - [ ] C. Polling loops use a slower instruction encoding
 - [ ] D. Interrupts are only available on newer processors
 
 **MC2.** What does the RISC-V `wfi` instruction allow the processor to do?
 
 - [ ] A. Check a condition faster
-- [ ] B. Wait for an interrupt rather than continuously executing a polling loop
+- [x] B. Wait for an interrupt rather than continuously executing a polling loop
 - [ ] C. Disable all interrupts permanently
 - [ ] D. Increase its clock speed while waiting
 
@@ -36,7 +36,7 @@ number, see the instructions there.
 **MC4.** Why might a real system deliberately choose polling despite its potential power cost?
 
 - [ ] A. Polling is easier to type
-- [ ] B. Interrupt handling and waking from low-power states have costs, and some applications may value predictable or very fast response enough to justify polling
+- [x] B. Interrupt handling and waking from low-power states have costs, and some applications may value predictable or very fast response enough to justify polling
 - [ ] C. Interrupts are not supported on RISC-V
 - [ ] D. Polling always uses less power in practice
 
