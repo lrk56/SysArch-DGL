@@ -48,8 +48,8 @@ number, see the instructions there.
 
 In 2–3 sentences, correct this statement: "Polling and interrupts accomplish the same thing, so it doesn't really matter which one you use."
 
-> Your answer:
->
+> Your answer: Polling and interrupt-driven waiting get you the same result, but they treat the CPU very differently while it waits. With polling, the CPU keeps running instructions just to check whether the event has happened. However, with interrupts, the CPU can drop into a low-power state until something wakes it. That can save energy, though how much simply depends on the hardware and on the cost of handling each interrupt.
+> 
 >
 >
 
