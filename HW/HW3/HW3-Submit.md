@@ -29,7 +29,7 @@ number, see the instructions there.
 **MC3.** What hardware component is responsible for receiving interrupt requests and signaling the CPU that an event requires attention?
 
 - [ ] A. The compiler
-- [ ] B. The interrupt controller
+- [x] B. The interrupt controller
 - [ ] C. The register file
 - [ ] D. The cache hierarchy
 
@@ -113,7 +113,7 @@ Before this assignment, how well could you explain why a polling loop and an int
 5. I had a working background in this topic and was confident I could effectively explain it coming in.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _1_
 
 ### P1 — After
 
@@ -126,7 +126,7 @@ After this assignment, how well could you explain why a polling loop and an inte
 5. I could explain this topic confidently in a technical discussion with someone knowledgeable about the subject.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _4_
 
 ### INV — What drove your investigation?
 
@@ -134,7 +134,7 @@ Pick the one that fits best.
 
 - [ ] I mainly wanted to complete the required assignment efficiently.
 - [ ] I mainly wanted to understand enough to answer the assignment questions correctly.
-- [ ] I mainly wanted to resolve something from the demonstration or assignment that didn't make sense to me.
+- [x] I mainly wanted to resolve something from the demonstration or assignment that didn't make sense to me.
 - [ ] I mainly wanted to understand the technical issue well enough that I could explain or apply it beyond this assignment.
 - [ ] Something else. *(Optional: tell us what.)*
 - [ ] Prefer not to answer
@@ -145,14 +145,14 @@ Pick one.
 
 - [ ] The in-class demonstration / hook
 - [ ] Reading the Concept section
-- [ ] The AI investigation
+- [x] The AI investigation
 - [ ] Challenging or verifying something the AI told me
 - [ ] Answering the Confirm questions
 - [ ] Prefer not to answer
 
 ### SCA — What should we do with this format?
 
-- [ ] Continue as is. *Tell us more (optional): any suggestions to make it even better?*
+- [x] Continue as is. *Tell us more (optional): any suggestions to make it even better?*
 - [ ] Adjust something. *Tell us more (optional): what would you change?*
 - [ ] Stop, and go back to a traditional homework model. *Tell us more (optional): what didn't work for you?*
 - [ ] Prefer not to answer
