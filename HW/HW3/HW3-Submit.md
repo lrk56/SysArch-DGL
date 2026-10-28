@@ -82,8 +82,8 @@ In 2–3 sentences, correct this statement: "Polling and interrupts accomplish t
 
 Check the **two** lecture concepts that most directly explain the engineering tradeoff you investigated, and explain each in one sentence.
 
-- [x] Interrupt controller — explanation:
-- [x] `wfi` / low-power wait states — explanation:
+- [x] Interrupt controller — explanation: The interrupt controller receives and manages interrupt requests so the CPU can respond to events without repeatedly polling for them. 
+- [x] `wfi` / low-power wait states — explanation: The wfi instruction can let the CPU enter a lower power sleep state while waiting for an interrupt, therefore reducing energy consumption compared with if it continuously executed polling instructions.
 - [ ] Trap vectors and handler dispatch — explanation:
 - [ ] Wake-up latency — explanation:
 - [ ] Privilege mode transitions on interrupt entry — explanation:
